@@ -2,6 +2,8 @@ package config;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.PageLoadStrategy;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -19,6 +21,11 @@ public class WebHooks {
         Selenide.open("https://edujira.ifellow.ru/secure/Dashboard.jspa");
         // Открываем окно браузера во весь экран
         getWebDriver().manage().window().maximize();
+    }
+
+    @AfterEach
+    public void closeDriver(){
+        WebDriverRunner.closeWebDriver();
     }
 }
 
