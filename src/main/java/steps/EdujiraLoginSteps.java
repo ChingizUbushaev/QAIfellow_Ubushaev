@@ -9,9 +9,11 @@ import io.cucumber.java.ru.Когда;
 import io.cucumber.java.ru.Тогда;
 
 import java.time.Duration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EdujiraLoginSteps extends EdujiraLoginPage {
-
+    private static final java.util.logging.Logger LOGGER = Logger.getLogger(EdujiraLoginSteps.class.getName());
     @Когда("^в поле Имя пользователя вводим '(.*)'")
     public void enterUsername(String username) {
         fieldUsername.shouldBe(Condition.visible, Duration.ofSeconds(120)).setValue(username);
@@ -27,6 +29,6 @@ public class EdujiraLoginSteps extends EdujiraLoginPage {
     @Тогда("^появляется панель задач с заголовком '(.*)'")
     public void appearTaskBar(String titleTaskBar){
         Assertions.assertEquals( taskBar.text(), titleTaskBar);
-        Selenide.sleep(5000);
+        LOGGER.log(Level.INFO, "Авторизация пользователя пройдена успешна");
     }
 }
