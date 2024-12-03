@@ -1,18 +1,16 @@
-package config;
+package steps;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import io.cucumber.java.*;
 import org.openqa.selenium.PageLoadStrategy;
-import org.junit.jupiter.api.BeforeEach;
-
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class WebHooks {
-
-    @BeforeEach
-    public void initBrowser() {
-
+public class Hooks {
+    @Before("@edujira")
+    public void beforeEdujira(Scenario scenario) {
+        scenario.log("Runs before each scenarios tagged with @edujira");
         // Тест начнется после загрузки основных элементов страницы
         Configuration.pageLoadStrategy = PageLoadStrategy.EAGER.toString();
         // Открываем нужный сайт
@@ -20,6 +18,9 @@ public class WebHooks {
         // Открываем окно браузера во весь экран
         getWebDriver().manage().window().maximize();
     }
+
+    @After("@edujira")
+    public void afterEdujira() {
+        Selenide.closeWebDriver();
+    }
 }
-
-
