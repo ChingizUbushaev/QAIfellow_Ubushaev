@@ -24,9 +24,8 @@ public class EdujiraProjectsSteps extends ProjectsPage {
     }
 
     @Step("Проверяем, что появилась панель с заголовком {titleBoardTasks}")
-    public EdujiraProjectsSteps checkBoardTasks(String titleBoardTasks) {
+    public void checkBoardTasks(String titleBoardTasks) {
         Assertions.assertEquals(tagH1.text(), titleBoardTasks);
-        return this;
     }
 
     @Step("Проверяем количество задач на текущий момент")
@@ -63,15 +62,13 @@ public class EdujiraProjectsSteps extends ProjectsPage {
     }
 
     @Step("Обновляем страницу")
-    public EdujiraProjectsSteps refreshPage() {
+    public void refreshPage() {
         Selenide.refresh();
-        return this;
     }
 
     @Step("Проверяем что количество задач увеличелось")
-    public EdujiraProjectsSteps compareNumberTasks(int oldNumberTasks, int newNumberTasks) {
+    public void compareNumberTasks(int oldNumberTasks, int newNumberTasks) {
         Assertions.assertTrue(newNumberTasks > oldNumberTasks);
-        return this;
     }
 
     @Step("Заполняем поле Описание строкой {textarea}")
@@ -94,9 +91,8 @@ public class EdujiraProjectsSteps extends ProjectsPage {
     }
 
     @Step("Проверяем, что статус стал {bugStatus}")
-    public EdujiraProjectsSteps checkStatus(String bugStatus) {
+    public void checkStatus(String bugStatus) {
         Assertions.assertEquals(bugStatusText.text(), bugStatus);
-        return this;
     }
 
     @Step("Проверяем задачу {taskName}")
@@ -108,9 +104,8 @@ public class EdujiraProjectsSteps extends ProjectsPage {
     }
 
     @Step("Проверяем {version} и {status} задачи")
-    public EdujiraProjectsSteps checkFieldsTask(String version, String status) {
+    public void checkFieldsTask(String version, String status) {
         Assertions.assertEquals(taskTypeVersion.text(), version);
         Assertions.assertEquals(taskStatusText.text(), status);
-        return this;
     }
 }

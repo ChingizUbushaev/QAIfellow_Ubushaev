@@ -24,9 +24,8 @@ public class EdujiraLoginSteps extends EdujiraLoginPage {
     }
 
     @Step("Проверяем панель задач с заголовком {title}")
-    public EdujiraLoginSteps checkTaskBar(String title) {
+    public void checkTaskBar(String title) {
         Assertions.assertEquals(taskBar.text(), title);
-        return this;
     }
 
     @Step("Открываем файл с properties")
